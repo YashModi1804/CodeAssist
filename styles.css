@@ -18,12 +18,112 @@
     z-index: 9999;
   } */
   
+*{
+  background-color: black !important;
+  color: white;
+  
+}
 
+#quiz-container{
+  display:flex;
+  flex-direction: column;
+  margin-left: 30vw;
+  font-size: larger;
 
+}
+#start-quiz-btn{
+  border: 2px solid grey;
+  border-radius: 7px ;
+}
+
+#quiz-container button{
+  justify-content: center;
+  align-items: center;
+  width: 10vw;
+  color: rgb(0, 255, 166);
+  margin-left: 11vw;
+  margin-top: 7vh;
+
+}
+#start-quiz-btn {
+  transition: transform 0.3s ease;
+}
+
+#start-quiz-btn:hover {
+  transform: scale(1.12); 
+}
 
 body{
-  background-color:#eee;
+  background-color: rgba(0, 0, 0, 0.87);
 }
+.logo{
+  height: 30vh;
+  width: 15vw;
+  margin: 0;
+}
+
+@keyframes rotateScaleColorFadeBlur {
+  0% {
+    transform: rotateX(0deg) scale(0.5);
+    opacity: 0;
+    color: #2cc4f6; 
+    filter: blur(5px);
+  }
+  50% {
+    transform: rotateX(180deg) scale(1.1);
+    opacity: 0.8;
+    color: rgb(0, 255, 166);
+    filter: blur(2px); 
+  }
+  100% {
+    transform: rotateX(360deg) scale(1);
+    opacity: 1;
+    color: #ffffff; 
+    filter: blur(0px); 
+  }
+}
+#quiz-container h1, #quiz-container p {
+  animation: rotateScaleColorFadeBlur 3s ease-in-out forwards;
+}
+
+
+#quiz-container h1, #quiz-container p,#quiz-container button {
+  animation: rotateScaleColorFadeBlur 3s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1; 
+  }
+  75% {
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+
+.logo {
+  animation: fadeInOut 3s ease-in-out forwards; 
+}
+
+
+/* 
+#quiz-container {
+  overflow-x: hidden; 
+} */
+
+
+
+
+/* Stop cursor animation on hover */
+/* h1:hover, p:hover {
+  animation: none;
+} */
 
 label.radio {
   cursor: pointer;
@@ -54,8 +154,8 @@ label.radio span {
 }
 
 label.radio input:checked + span {
-  border-color: red;
-  background-color: red;
+  border-color: rgb(57, 250, 247);
+  background-color: rgb(52, 220, 250);
   color: #fff;
 }
 
@@ -72,3 +172,12 @@ label.radio input:checked + span {
   outline: 0 !important;
   box-shadow: none !important;
 }
+
+.ans label {
+  transition: background-color 0.3s ease;
+}
+
+.ans label:hover {
+  background-color: #911313; 
+}
+
