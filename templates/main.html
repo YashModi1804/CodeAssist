@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,11 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body id="interface">
   <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" class="logo">
   <div id="quiz-container">
-   
+
     <!-- Your quiz content goes here -->
     <h1>Welcome to Code Assist </h1>
     <br><br>
@@ -19,47 +21,62 @@
     <button id="start-quiz-btn">Start Quiz</button>
   </div>
   <div class="thankyou">
-    <h1 >Thank You</h1>
+    <h1>Thank You</h1>
     <p>See you soon..</p>
     <div class="celebration">🎉</div>
   </div>
-    
+
+  
 
   <div id="question" class="container mt-5" id="container2">
     <div class="d-flex justify-content-center row">
-        <div class="col-md-10 col-lg-10">
-            <div class="border">
-                <div class="question bg-black p-3 border-bottom">
-                    <div class="d-flex flex-row justify-content-between align-items-center mcq">
-                        <h4>MCQ Quiz</h4><span>(5 of 20)</span></div>
-                </div>
-                <div class="question bg-black p-3 border-bottom">
-                    <div class="d-flex flex-row align-items-center question-title">
-                        <h3 class="text-danger">Q.</h3>
-                        <h5 class="mt-1 ml-2">Which of the following country has largest population?</h5>
-                    </div><div class="ans ml-2">
-<label class="radio"> <input type="radio" name="brazil" value="brazil"> <span>Brazil</span>
-</label>    
-</div><div class="ans ml-2">
-<label class="radio"> <input type="radio" name="Germany" value="Germany"> <span>Germany</span>
-</label>    
-</div><div class="ans ml-2">
-<label class="radio"> <input type="radio" name="Indonesia" value="Indonesia"> <span>Indonesia</span>
-</label>    
-</div><div class="ans ml-2">
-<label class="radio"> <input type="radio" name="Russia" value="Russia"> <span>Russia</span>
-</label>    
-</div></div>
-<div class="submit">
-        <button id="submit_button">Submit</button>   
-      </div>     
+      <div class="col-md-10 col-lg-10">
+        <div class="border">
+          <div class="question bg-black p-3 border-bottom">
+            <div class="d-flex flex-row justify-content-between align-items-center mcq">
+              <h4>MCQ Quiz</h4>
+              <div>
+                <button class="switch_button">JAVA</button>
+                <button class="switch_button">C++</button>
+                <button class="switch_button">Python</button>
+              </div>
             </div>
+          </div>
+          <div class="question bg-black p-3 border-bottom">
+            <div class="d-flex flex-row align-items-center question-title">
+              <h3 class="text-danger">Q.</h3>
+              <h5 class="mt-1 ml-2">HTML Full Form </h5>
+            </div>
+            <div class="ans ml-2">
+              <label class="radio"> <input type="radio" name="brazil" value="brazil"> <span>Hyper text markup
+                  language</span>
+              </label>
+            </div>
+            <div class="ans ml-2">
+              <label class="radio"> <input type="radio" name="brazil" value="Germany"> <span>Hyper markup
+                  language</span>
+              </label>
+            </div>
+            <div class="ans ml-2">
+              <label class="radio"> <input type="radio" name="brazil" value="Indonesia"> <span>Nothing</span>
+              </label>
+            </div>
+            <div class="ans ml-2">
+              <label class="radio"> <input type="radio" name="brazil" value="Russia"> <span>Kuch bhi nahi</span>
+              </label>
+            </div>
+          </div>
+          <div class="submit">
+            <button id="submit_button">Submit</button>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

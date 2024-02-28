@@ -75,11 +75,12 @@ body{
 }
 
 .submit button:hover {
-  background-color: #45a049;
-  color: white; /* Ensure text color remains white on hover */
+  background-color: #45eb45 !important;
+  color: black !important; /* Ensure text color remains white on hover */
+  font-weight: bolder;
 }
 
-.submit button::before {
+/* .submit button::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -90,18 +91,18 @@ body{
   border-radius: 50%;
   transition: all 0.5s ease;
   transform: translate(-50%, -50%) scale(0);
-}
+} */
 
-.submit button:hover::before {
+/* .submit button:hover::before {
   transform: translate(-50%, -50%) scale(1);
-}
+} */
 
 
-.submit button:hover::after {
+/* .submit button:hover::after {
   opacity: 1;
   color: white;
   transform: translate(-50%, -50%) scale(1);
-}
+} */
 
 
 .thankyou h1 {
@@ -282,7 +283,7 @@ label.radio span {
   padding: 4px 0px;
   border: 1px solid red;
   display: inline-block;
-  color: red;
+  color: red; 
   width: 100px;
   text-align: center;
   border-radius: 3px;
@@ -318,3 +319,11 @@ label.radio input:checked + span {
   background-color: #911313; 
 }
 
+
+
+#question .switch_button{
+  width: 70px;
+  border: 2px solid white;
+  text-decoration: none;
+  font-weight: 500;
+}
