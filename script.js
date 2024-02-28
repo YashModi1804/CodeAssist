@@ -1,3 +1,5 @@
+document.querySelector(".thankyou").style.display="none";
+
 document.addEventListener("DOMContentLoaded", function() {
   var quizContainer = document.getElementById("interface");
   var startQuizBtn = document.getElementById("start-quiz-btn");
@@ -6,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Request fullscreen
     document.getElementById("question").style.display = "block";
     document.getElementById("quiz-container").style.display = "none";
+    document.querySelector(".thankyou").style.display="none";
     if (quizContainer.requestFullscreen) {
       quizContainer.requestFullscreen();
     } else if (quizContainer.mozRequestFullScreen) { /* Firefox */
@@ -39,7 +42,9 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       // redirect to thank you page
       document.getElementById("question").style.display = "none";
-      document.getElementById("quiz-container").style.display = "flex";
+      // document.getElementById("quiz-container").style.display = "flex";
+      document.querySelector(".thankyou").style.display="flex";
+      
 
     };
     xhr.send("selection=" + userSelection); // Send user selection as POST data
