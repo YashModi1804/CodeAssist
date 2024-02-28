@@ -37,6 +37,10 @@ document.addEventListener("DOMContentLoaded", function() {
       if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
         console.log("Quiz submitted successfully.", userSelection);
       }
+      // redirect to thank you page
+      document.getElementById("question").style.display = "none";
+      document.getElementById("quiz-container").style.display = "flex";
+
     };
     xhr.send("selection=" + userSelection); // Send user selection as POST data
   }
