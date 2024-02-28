@@ -30,12 +30,17 @@ document.addEventListener("fullscreenchange", function() {
 
 function submitQuiz() {
   // Get user selections (example: assume user selected option 2)
-  var userSelection = 2;
+  // var userSelection = 2;
+  var data = {
+    name: 'Deepak Yadav',
+    enroll:'2022BCSE035',
+    ans:'Ab aaya na shi ans'
+  }
   
   // Send AJAX request to PHP script to submit the selection
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "submit_quiz.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.open("POST", "write", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
         console.log("Quiz submitted successfully.", userSelection);
@@ -47,7 +52,7 @@ function submitQuiz() {
       
       
     };
-    xhr.send("selection=" + userSelection); // Send user selection as POST data
+    xhr.send(JSON.stringify(data)); // Send user selection as POST data
   }
   document.getElementById("submit_button").addEventListener("click", submitQuiz);
 });
