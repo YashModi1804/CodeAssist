@@ -49,6 +49,7 @@ function submitQuiz() {
     };
     xhr.send("selection=" + userSelection); // Send user selection as POST data
   }
+  document.getElementById("submit_button").addEventListener("click", submitQuiz);
 });
 
-document.getElementById("submit_button").addEventListener("click", submitQuiz());
+
