@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fullscreen Quiz</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body id="interface">
-  <img src="./images/logo.png" alt="" class="logo">
+  <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" class="logo">
   <div id="quiz-container">
    
     <!-- Your quiz content goes here -->
@@ -51,14 +51,14 @@
 </label>    
 </div></div>
 <div class="submit">
-        <button >Submit</button>   
+        <button id="submit_button">Submit</button>   
       </div>     
             </div>
         </div>
     </div>
 </div>
 
-  <script src="script.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 </body>
