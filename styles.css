@@ -24,12 +24,17 @@
   
 }
 
+
+body{
+  background-color: rgba(0, 0, 0, 0.87);
+}
+
 #quiz-container{
   display:flex;
+  width: 100%;
   flex-direction: column;
-  margin-left: 30vw;
+  align-items: center;
   font-size: larger;
-
 }
 #start-quiz-btn{
   border: 2px solid grey;
@@ -53,9 +58,6 @@
   transform: scale(1.12); 
 }
 
-body{
-  background-color: rgba(0, 0, 0, 0.87);
-}
 .logo{
   height: 30vh;
   width: 15vw;
