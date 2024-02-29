@@ -327,3 +327,13 @@ label.radio input:checked + span {
   text-decoration: none;
   font-weight: 500;
 }
+
+#question .question pre {
+  color: white;
+  font-weight: 300;
+}
+#question {
+  position: absolute;
+  top: 50px;
+  left: 320px;
+}
