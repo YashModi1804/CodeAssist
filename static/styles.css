@@ -340,3 +340,34 @@ label.radio input:checked + span {
   text-decoration: none;
   font-weight: 500;
 }
+@media screen and (max-width: 768px) {
+  .celebration {
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em; /* Adjust font size for smaller screens */
+  }
+}
+@media screen and (max-width: 768px){
+  .logo {
+    height: 35vh;
+    width: 20vw;
+    display: flex;
+    margin-left: 40%;
+  }
+  #start-quiz-btn{
+    border: 2px solid grey;
+    border-radius: 7px ;
+  }
+
+  #quiz-container button{
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    color: rgb(0, 255, 166);
+    margin-left: 5vw;
+    margin-top: 7vh;
+  }
+
+
+}
