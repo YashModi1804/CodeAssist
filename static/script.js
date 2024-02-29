@@ -1,13 +1,24 @@
 document.querySelector(".thankyou").style.display="none";
 var submitted = 0;
-
+var username = ""
+var enroll = ""
 document.addEventListener("DOMContentLoaded", function() {
   var quizContainer = document.getElementById("interface");
   var startQuizBtn = document.getElementById("start-quiz-btn");
   
   startQuizBtn.addEventListener("click", function() {
     // Request fullscreen
-
+    username = document.getElementById("name").value
+    enroll = document.getElementById("enroll").value
+    console.log(username)
+    if(username === ""){
+      document.getElementById("name_tag").innerHTML = "This field is important"
+      return
+    }
+    else if(enroll === ""){
+      document.getElementById("enroll_tag").innerHTML = "This field is important"
+      return
+    }
     document.getElementById("question").style.display = "block";
     document.getElementById("quiz-container").style.display = "none";
     document.querySelector(".thankyou").style.display="none";
