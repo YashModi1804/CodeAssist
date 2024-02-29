@@ -54,10 +54,11 @@ def write():
         print(result)
     except Exception as e:
         print("Error occurred:", e)
+        return 0
         # Optionally, you can raise the exception to halt the program
         raise
 
-    return render_template('main.html')
+    return 1
 
 if __name__ == "__main__":
     app.run(debug=True)
