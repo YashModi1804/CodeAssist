@@ -374,7 +374,33 @@ label.radio input:checked + span {
 
 
 #question {
-  position: absolute;
+  position: absolute; 
   top: 10%;
   left: 18%;
+  width: 64%; 
+  height: 80%; 
+  overflow-y: auto !important;
+}
+#question::-webkit-scrollbar {
+  width: 1px; /* Set the width of the scrollbar */
+}
+
+/* Track */
+#question::-webkit-scrollbar-track {
+  background: #ffffff; /* Set the background color of the scrollbar track */
+}
+
+/* Handle */
+#question::-webkit-scrollbar-thumb {
+  color: rgb(0, 255, 166); /* Set the color of the scrollbar handle */
+}
+
+/* Handle on hover */
+#question::-webkit-scrollbar-thumb:hover {
+  color: rgb(0, 255, 166); /* Set the color of the scrollbar handle on hover */
+}
+
+/* Shift the scrollbar to the right */
+#question::-webkit-scrollbar {
+  margin-right: 0px; /* Adjust as needed to shift the scrollbar */
 }
