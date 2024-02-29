@@ -38,9 +38,13 @@ app = Flask(__name__)
 def home():
     return render_template("main.html")
 
-@app.route("/write", methods=["POST"])
+@app.route("/write", methods=["POST","GET"])
 def write():
     data = request.json
+    res = {
+        'msg': "deepak",
+        'val':0
+    }
 
     try:
         cursor = connection.cursor()
@@ -53,13 +57,16 @@ def write():
         result = cursor.fetchall()
         print(result)
         if(result != ()):
-            return jsonify("You have already answered today.")
+            res['msg'] = "you have already answered today"
+            res['val'] = 0
+            return jsonify(res)
     except Exception as e:
         print("Error occurred:", e)
         # Optionally, you can raise the exception to halt the program
         raise
-
-    return jsonify("Answer submitted successfully")
+    res['msg'] = "answer submitted successfully"
+    res['val'] = 1
+    return jsonify(res)
 
 if __name__ == "__main__":
     app.run(debug=True)
