@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
   startQuizBtn.addEventListener("click", function() {
     // Request fullscreen
+
     document.getElementById("question").style.display = "block";
     document.getElementById("quiz-container").style.display = "none";
     document.querySelector(".thankyou").style.display="none";
@@ -40,22 +41,57 @@ function submitQuiz() {
     ans:'Ab aaya na shi ans'
   }
   
+  var url = '/write';
+
+  // // Example data to send to the server
+  // var data = {
+  //     "name": "Deepak Yadav",
+  //     "enroll": "2022BCSE035",
+  //     "ans": "Some answer"
+  // };
+
+  // Configuration for the Fetch API
+  var requestOptions = {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+  };
+
+  // Send the request to the Flask server
+  fetch(url, requestOptions)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          return response.text();
+      })
+      .then(data => {
+          // Handle the response from the Flask server
+          // console.log(data)
+          document.getElementById("message").innerHTML = data
+      })
+      .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+      });
+
   // Send AJAX request to PHP script to submit the selection
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "write", true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-        console.log("Quiz submitted successfully.", userSelection);
-      }
-      // redirect to thank you page
-      document.getElementById("question").style.display = "none";
-      // document.getElementById("quiz-container").style.display = "flex";
-      document.querySelector(".thankyou").style.display="flex";
+  // var xhr = new XMLHttpRequest();
+  // xhr.open("POST", "write", true);
+  //   xhr.setRequestHeader("Content-Type", "application/json");
+  //   xhr.onreadystatechange = function() {
+  //     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+  //       console.log("Quiz submitted successfully.", userSelection);
+  //     }
+  //     // redirect to thank you page
+  //     document.getElementById("question").style.display = "none";
+  //     // document.getElementById("quiz-container").style.display = "flex";
+  //     document.querySelector(".thankyou").style.display="flex";
       
       
-    };
-    xhr.send(JSON.stringify(data)); // Send user selection as POST data
+  //   };
+  //   xhr.send(JSON.stringify(data)); // Send user selection as POST data
   }
   document.getElementById("submit_button").addEventListener("click", submitQuiz);
 });

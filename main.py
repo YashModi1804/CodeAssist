@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 
 # database
 import pymysql
@@ -46,19 +46,20 @@ def write():
         cursor = connection.cursor()
         # cursor.execute("create table student_data (name varchar(30), enroll varchar(11) primary key, answer varchar(500));")
         cursor.execute("set autocommit = 1;")
-        cursor.execute(f"insert into student_data values('{data['name']}', '{data['enroll']}', '{data['ans']}');")
+        # cursor.execute(f"insert into student_data values('{data['name']}', '{data['enroll']}', '{data['ans']}');")
         # cursor.execute("delete from student_data where name = 'Deepak Yadav';")
-        # cursor.execute("select * from student_data;")
+        cursor.execute(f"select * from student_data where enroll='{data['enroll']}';")
         
         result = cursor.fetchall()
         print(result)
+        if(result != ()):
+            return jsonify("You have already answered today.")
     except Exception as e:
         print("Error occurred:", e)
-        return 0
         # Optionally, you can raise the exception to halt the program
         raise
 
-    return 1
+    return jsonify("Answer submitted successfully")
 
 if __name__ == "__main__":
     app.run(debug=True)
