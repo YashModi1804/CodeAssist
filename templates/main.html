@@ -42,7 +42,7 @@
               </div>
             </div>
           </div>
-          <div class="question bg-black p-3 border-bottom">
+          <div class="question d-flex bg-black p-3 border-bottom">
             <div class="d-flex flex-row align-items-center question-title">
               <h3 class="text-danger">Q.</h3>
               <pre class="mt-1 ml-2">// Java Question:
@@ -63,6 +63,7 @@
                 }
                 </pre>
             </div>
+            <div class="options">
             <div class="ans ml-2">
               <label class="radio"> <input type="radio" name="brazil" value="brazil"> <span>Hyper text markup
                   language</span>
@@ -82,12 +83,14 @@
               </label>
             </div>
           </div>
+          </div>
           <div class="submit">
             <button id="submit_button">Submit</button>
           </div>
         </div>
       </div>
     </div>
+    <p id="message"></p>
   </div>
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>
