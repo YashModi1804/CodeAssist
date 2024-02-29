@@ -48,7 +48,7 @@ def write():
         cursor.execute("set autocommit = 1;")
         cursor.execute(f"insert into student_data values('{data['name']}', '{data['enroll']}', '{data['ans']}');")
         # cursor.execute("delete from student_data where name = 'Deepak Yadav';")
-        cursor.execute("select * from student_data;")
+        # cursor.execute("select * from student_data;")
         
         result = cursor.fetchall()
         print(result)

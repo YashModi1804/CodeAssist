@@ -1,4 +1,5 @@
 document.querySelector(".thankyou").style.display="none";
+var submitted = 0;
 
 document.addEventListener("DOMContentLoaded", function() {
   var quizContainer = document.getElementById("interface");
@@ -24,7 +25,9 @@ quizContainer.msRequestFullscreen();
 document.addEventListener("fullscreenchange", function() {
   if (!document.fullscreenElement) {
     // Submit the quiz when exiting fullscreen
-    submitQuiz();
+    if(!submitted){
+      submitQuiz();
+    }
   }
 });
 
