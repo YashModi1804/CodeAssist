@@ -37,7 +37,7 @@ function submitQuiz() {
   // var userSelection = 2;
   var data = {
     name: 'Deepak Yadav',
-    enroll:'2022BCSE035',
+    enroll:'2022BCSE038',
     ans:'Ab aaya na shi ans'
   }
   
@@ -65,12 +65,22 @@ function submitQuiz() {
           if (!response.ok) {
               throw new Error('Network response was not ok');
           }
-          return response.text();
+          return response.json();
       })
       .then(data => {
           // Handle the response from the Flask server
-          // console.log(data)
-          document.getElementById("message").innerHTML = data
+          // document.getElementById("message").innerHTML = data['msg']
+          alert(data.msg)
+          if(data.val === 1){
+            document.getElementById("question").style.display = "none";
+            // document.getElementById("quiz-container").style.display = "flex";
+            document.querySelector(".thankyou").style.display="flex";
+          }
+          else if(data.val === 0){
+            document.getElementById("question").style.display = "none";
+            document.getElementById("quiz-container").style.display = "flex";
+          }
+          submitted = 1
       })
       .catch(error => {
           console.error('There was a problem with the fetch operation:', error);
