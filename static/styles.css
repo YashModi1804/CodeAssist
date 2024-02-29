@@ -241,6 +241,9 @@ body{
 #quiz-container h1, #quiz-container p,#quiz-container button {
   animation: rotateScaleColorFadeBlur 3s ease-in-out forwards;
 }
+.input-field{
+  animation: rotateScaleColorFadeBlur 3s ease-in-out forwards;
+}
 
 @keyframes fadeInOut {
   0% {
@@ -403,4 +406,34 @@ label.radio input:checked + span {
 /* Shift the scrollbar to the right */
 #question::-webkit-scrollbar {
   margin-right: 0px; /* Adjust as needed to shift the scrollbar */
+}
+
+
+/* Style for labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Style for input fields */
+input[type="text"] {
+  width: 300px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  margin-bottom: 15px;
+}
+
+/* Style for placeholder text */
+input[type="text"]::placeholder {
+  color: #999;
+}
+
+/* Style for focus state */
+input[type="text"]:focus {
+  outline: none;
+  border-color: #66afe9; /* Change border color on focus */
+  box-shadow: 0 0 5px #66afe9; /* Add a subtle shadow on focus */
 }
