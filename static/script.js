@@ -46,9 +46,14 @@ document.addEventListener("fullscreenchange", function() {
 function submitQuiz() {
 
 
+  // var data = {
+  //   name: 'Deepak Yadav',
+  //   enroll:'2022BCSE039',
+  //   ans:'Ab aaya na shi ans'
+  // }
   var data = {
-    name: 'Deepak Yadav',
-    enroll:'2022BCSE039',
+    name: username,
+    enroll:enroll,
     ans:'Ab aaya na shi ans'
   }
 
