@@ -33,13 +33,27 @@ document.addEventListener("fullscreenchange", function() {
 });
 
 function submitQuiz() {
-  // Get user selections (example: assume user selected option 2)
-  // var userSelection = 2;
+
+
   var data = {
     name: 'Deepak Yadav',
-    enroll:'2022BCSE038',
+    enroll:'2022BCSE039',
     ans:'Ab aaya na shi ans'
   }
+
+  var radioButtons = document.getElementsByName("ans");
+
+// Iterate over radio buttons to find the selected one
+  var selectedValue = "";
+  for (var i = 0; i < radioButtons.length; i++) {
+    if (radioButtons[i].checked) {
+      selectedValue = radioButtons[i].value;
+      break; // Exit loop if found the selected radio button
+    }
+  }
+  data.ans = selectedValue
+
+  console.log(data.ans)
   
   var url = '/write';
 
