@@ -12,11 +12,11 @@ document.addEventListener("DOMContentLoaded", function() {
     enroll = document.getElementById("enroll").value
     console.log(username)
     if(username === ""){
-      document.getElementById("name_tag").innerHTML = "This field is important"
+      document.getElementById("name_tag").innerHTML = "This field is important *"
       return
     }
     else if(enroll === ""){
-      document.getElementById("enroll_tag").innerHTML = "This field is important"
+      document.getElementById("enroll_tag").innerHTML = "This field is important *"
       return
     }
     document.getElementById("question").style.display = "block";
