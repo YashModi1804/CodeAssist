@@ -17,49 +17,57 @@ connection = pymysql.connect(
     user="avnadmin",
     write_timeout=timeout,
 )
+cursor = connection.cursor()
 
-question_data = {
-    'java': '',
-    'python': '',
-    'cpp': '',
-    'A': 'option a',
-    'B': 'option b',
-    'C': 'option c',
-    'D': 'option d'
-}
+
 app = Flask(__name__)
 
 # Route for the main page
 @app.route("/")
 def home():
+    cursor.execute("select * from question")
+    result = cursor.fetchall()
+    
+    question_data = {
+    'java': result[0]['java'],
+    'python': result[0]['python'],
+    'cpp': result[0]['cpp'],
+    'A': result[0]['a'],
+    'B': result[0]['b'],
+    'C': result[0]['c'],
+    'D': result[0]['d']
+    }
     return render_template("main.html", question = question_data)
+@app.route("/push")
+def push():
+    return render_template("push.html")
 
-@app.route("/pushdata")
+@app.route("/pushdata",methods = ["POST", "GET"])
 def pushData():
+    data = request.json
     result = ""
     try:
-        cursor = connection.cursor()
         cursor.execute("set autocommit = 1")
         # cursor.execute(f"insert into student_data values('{data['name']}', '{data['enroll']}', '{data['ans']}');")
         # cursor.execute("create table question (java varchar(200), python varchar(200), cpp varchar(200) primary key, a varchar(100), b varchar(100), c varchar(100), d varchar(100))")
-        # cursor.execute("insert into question values('abc', 'def', 'ghi','a','b','v','d');")
-        cursor.execute("select * from question;")
-        result = cursor.fetchall()
-        print(result)
+        cursor.execute(f"insert into question values('{data['java']}', '{data['python']}', '{data['cpp']}','{data['a']}','{data['b']}','{data['c']}','{data['d']}');")
+        # cursor.execute("delete from question;")
+        # cursor.execute("select * from question;")
+        # result = cursor.fetchall()
+        # print(result)
+        return jsonify("data pushed successfully")
     except Exception as e:
         print(e)
-    return result
+    return jsonify("post unsuccessfull")
 
-@app.route("/getdata")
+@app.route("/getdata", methods=["POST", "GET"])
 def getdata():
     try:
-        cursor = connection.cursor()
         # cursor.execute("create table student_data (name varchar(30), enroll varchar(11) primary key, answer varchar(500));")
         cursor.execute("set autocommit = 1;")
         # cursor.execute(f"insert into student_data values('{data['name']}', '{data['enroll']}', '{data['ans']}');")
         # cursor.execute("delete from student_data where name = 'Deepak Yadav';")
         cursor.execute(f"select * from student_data;")
-        
         result = cursor.fetchall()
         return jsonify(result)
     except Exception as e:
@@ -76,7 +84,6 @@ def write():
     }
 
     try:
-        cursor = connection.cursor()
         # cursor.execute("create table student_data (name varchar(30), enroll varchar(11) primary key, answer varchar(500));")
         cursor.execute("set autocommit = 1;")
         cursor.execute(f"select * from student_data where enroll='{data['enroll']}';")
