@@ -335,10 +335,24 @@ label.radio input:checked + span {
   background-color: #911313; 
 }
 
+.switch_button:hover{
+  transform: scale(1.1);
+}
+.switch_button{
+  border-radius: 2px;
+}
+.switch_button:focus{
+  color: #02f78d !important;
 
-
+}
+.switch_button:active{
+  border-color: #02f78d;
+}
+.switch_button.active:hover{
+  border-color: #02f78d;
+}
 #question .switch_button{
-  width: 70px;
+  width: 10vw;
   border: 2px solid white;
   text-decoration: none;
   font-weight: 500;
