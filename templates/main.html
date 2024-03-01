@@ -46,9 +46,9 @@
             <div class="d-flex flex-row justify-content-between align-items-center mcq">
               <h4>MCQ Quiz</h4>
               <div>
-                <button class="switch_button">JAVA</button>
-                <button class="switch_button">C++</button>
-                <button class="switch_button">Python</button>
+                <button onclick="changeImage('java')" class="switch_button">JAVA</button>
+                <button onclick="changeImage('cpp')" class="switch_button">C++</button>
+                <button onclick="changeImage('python')" class="switch_button">Python</button>
               </div>
             </div>
           </div>
@@ -56,26 +56,24 @@
             <div class="d-flex flex-row align-items-center question-title">
               <!-- <h3 class="text-danger">Q.</h3> -->
               <!-- <p class="mt-1 ml-2"> -->
-                <img width="400px" src="{{ url_for('static', filename='images/ques.jpg') }}" class="mt-1 ml-2" alt="">
+                <img width="400px" id="question_image" src="{{question.cpp}}" class="mt-1 ml-2" alt="">
                 <!-- </p> -->
             </div>
             <div class="options">
             <div class="ans ml-2">
-              <label class="radio"> <input type="radio" name="ans" value="brazil"> <span>Hyper text markup
-                  language</span>
+              <label class="radio"> <input type="radio" name="ans" value={{question.A}}> <span>{{question.A}}</span>
               </label>
             </div>
             <div class="ans ml-2">
-              <label class="radio"> <input type="radio" name="ans" value="Germany"> <span>Hyper markup
-                  language</span>
+              <label class="radio"> <input type="radio" name="ans" value={{question.B}}> <span>{{question.B}}</span>
               </label>
             </div>
             <div class="ans ml-2">
-              <label class="radio"> <input type="radio" name="ans" value="Indonesia"> <span>Nothing</span>
+              <label class="radio"> <input type="radio" name="ans" value={{question.C}}> <span>{{question.C}}</span>
               </label>
             </div>
             <div class="ans ml-2">
-              <label class="radio"> <input type="radio" name="ans" value="Russian"> <span>Kuch bhi nahi</span>
+              <label class="radio"> <input type="radio" name="ans" value={{question.D}}> <span>{{question.D}}</span>
               </label>
             </div>
           </div>
@@ -88,7 +86,21 @@
     </div>
     <p id="message"></p>
   </div>
-
+  <script>
+      function changeImage(param) {
+        console.log(param)
+            var image = document.getElementById('question_image');
+            if(param === 'java'){
+              image.src = "{{question.java}}"
+            }
+            else if(param === 'python'){
+              image.src = "{{question.python}}"
+            }
+            else if(param === 'cpp'){
+              image.src = "{{question.cpp}}"
+            }
+        }
+  </script>
   <script src="{{ url_for('static', filename='script.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>

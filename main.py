@@ -18,25 +18,21 @@ connection = pymysql.connect(
     write_timeout=timeout,
 )
 
-# try:
-#     cursor = connection.cursor()
-#     # cursor.execute("create table student_data (name varchar(30), enroll varchar(11) primary key, answer varchar(500));")
-#     # cursor.execute("set autocommit = 1;")
-#     # cursor.execute("insert into student_data values('Deepak Yadav', '2022BCSE036', 'galat ans');")
-#     # cursor.execute("delete from student_data where name = 'Deepak Yadav';")
-#     cursor.execute("select * from student_data;")
-    
-#     print(cursor.fetchall())
-# finally:
-#     # print("closed")
-#     connection.close()
-
+question_data = {
+    'java': 'https://imgs.search.brave.com/D6Tct29SgNOuVzHkFM5Wl26LEmYJxvQjqVUNe9xSJPE/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9laS5w/aG5jZG4uY29tL2lz/LXN0YXRpYy9pbWFn/ZXMvY2F0ZWdvcmll/cy8obT1xSVcyNTZU/YmVnWjg4emphZE9m/KShtaD1EbTJUdlM3/bjhKV3BBb21OKTUu/anBn',
+    'python': 'https://imgs.search.brave.com/LME7nof0d4-eOXnXgz5JZSZhnDgJphVGAyMZJgcZhWg/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9laS5w/aG5jZG4uY29tL2lz/LXN0YXRpYy9pbWFn/ZXMvY2F0ZWdvcmll/cy8obT1xX0czNTZU/YmVnWjg4emphZE9m/KShtaD00WnRuVkF5/THc4X3RRM3JWKTQu/anBn',
+    'cpp': 'https://imgs.search.brave.com/hMTGCMtyqgJetEX8PQ46l86rwa9-d46EnwYOmr2lxyY/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9laS5w/aG5jZG4uY29tL2lz/LXN0YXRpYy9pbWFn/ZXMvY2F0ZWdvcmll/cy8obT1xWTE1NTZU/YmVxTTQ4emphZE9m/KShtaD1DeEppX2Mt/ZnJfTmxiTERMKXJv/a3VfMjIuanBn',
+    'A': 'option a',
+    'B': 'option b',
+    'C': 'option c',
+    'D': 'option d'
+}
 app = Flask(__name__)
 
 # Route for the main page
 @app.route("/")
 def home():
-    return render_template("main.html")
+    return render_template("main.html", question = question_data)
 
 @app.route("/getdata")
 def getdata():
@@ -80,7 +76,7 @@ def write():
         print("Error occurred:", e)
         # Optionally, you can raise the exception to halt the program
         raise
-    
+
     cursor.execute(f"insert into student_data values('{data['name']}', '{data['enroll']}', '{data['ans']}');")
 
     res['msg'] = "answer submitted successfully"
