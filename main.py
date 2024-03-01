@@ -19,9 +19,9 @@ connection = pymysql.connect(
 )
 
 question_data = {
-    'java': 'https://imgs.search.brave.com/D6Tct29SgNOuVzHkFM5Wl26LEmYJxvQjqVUNe9xSJPE/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9laS5w/aG5jZG4uY29tL2lz/LXN0YXRpYy9pbWFn/ZXMvY2F0ZWdvcmll/cy8obT1xSVcyNTZU/YmVnWjg4emphZE9m/KShtaD1EbTJUdlM3/bjhKV3BBb21OKTUu/anBn',
-    'python': 'https://imgs.search.brave.com/LME7nof0d4-eOXnXgz5JZSZhnDgJphVGAyMZJgcZhWg/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9laS5w/aG5jZG4uY29tL2lz/LXN0YXRpYy9pbWFn/ZXMvY2F0ZWdvcmll/cy8obT1xX0czNTZU/YmVnWjg4emphZE9m/KShtaD00WnRuVkF5/THc4X3RRM3JWKTQu/anBn',
-    'cpp': 'https://imgs.search.brave.com/hMTGCMtyqgJetEX8PQ46l86rwa9-d46EnwYOmr2lxyY/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9laS5w/aG5jZG4uY29tL2lz/LXN0YXRpYy9pbWFn/ZXMvY2F0ZWdvcmll/cy8obT1xWTE1NTZU/YmVxTTQ4emphZE9m/KShtaD1DeEppX2Mt/ZnJfTmxiTERMKXJv/a3VfMjIuanBn',
+    'java': '',
+    'python': '',
+    'cpp': '',
     'A': 'option a',
     'B': 'option b',
     'C': 'option c',
@@ -33,6 +33,22 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     return render_template("main.html", question = question_data)
+
+@app.route("/pushdata")
+def pushData():
+    result = ""
+    try:
+        cursor = connection.cursor()
+        cursor.execute("set autocommit = 1")
+        # cursor.execute(f"insert into student_data values('{data['name']}', '{data['enroll']}', '{data['ans']}');")
+        # cursor.execute("create table question (java varchar(200), python varchar(200), cpp varchar(200) primary key, a varchar(100), b varchar(100), c varchar(100), d varchar(100))")
+        # cursor.execute("insert into question values('abc', 'def', 'ghi','a','b','v','d');")
+        cursor.execute("select * from question;")
+        result = cursor.fetchall()
+        print(result)
+    except Exception as e:
+        print(e)
+    return result
 
 @app.route("/getdata")
 def getdata():
