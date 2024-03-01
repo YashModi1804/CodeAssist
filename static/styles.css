@@ -196,7 +196,7 @@ body{
   width: 10vw;
   color: rgb(0, 255, 166);
   margin-left: 11vw;
-  margin-top: 7vh;
+  margin-top: 3vh;
 
 }
 #start-quiz-btn {
@@ -236,7 +236,9 @@ body{
 #quiz-container h1, #quiz-container p {
   animation: rotateScaleColorFadeBlur 3s ease-in-out forwards;
 }
-
+#quiz-container h1{
+  font-size: 9vh;
+}
 
 #quiz-container h1, #quiz-container p,#quiz-container button {
   animation: rotateScaleColorFadeBlur 3s ease-in-out forwards;
@@ -383,7 +385,7 @@ label.radio input:checked + span {
     width: 20vw;
     color: rgb(0, 255, 166);
     margin-left: 5vw;
-    margin-top: 7vh;
+    margin-top: 2.5vh;
   }
 
 
